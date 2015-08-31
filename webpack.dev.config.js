@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var I18nPlugin = require('i18n-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -11,10 +12,11 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js',
+    filename: 'bundle/en.js',
     publicPath: '/public/'
   },
   plugins: [
+    new I18nPlugin(null, '___'), // do not translate
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
