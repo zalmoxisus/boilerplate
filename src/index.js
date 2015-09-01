@@ -1,4 +1,5 @@
 import React from 'react';
-import App from './App';
+import FilterableProductTable from './FilterableProductTable';
+var PRODUCTS = require('./products.js');
 
-React.render(<App />, document.body);
+React.render(<FilterableProductTable products={PRODUCTS} />, document.body);
