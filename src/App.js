@@ -18,4 +18,6 @@ export default class App extends Component {
       </div>
     );
   };
-}
+};
+
+App.defaultProps  = { name: 'Anastasia' };
