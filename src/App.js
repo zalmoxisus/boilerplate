@@ -6,15 +6,20 @@ export default class App extends Component {
   // custom function
   sayHi = () => {
     this.setState({name: 'Mike'});
+    React.findDOMNode(this.refs.refs['theInput']).focus();
   };
 
   render () {
     return (
       <div>
         <div><p>Hello, {this.state.name}! :)</p></div>
-        <div><input type="text" placeholder="Type a name here" onInput={(event) => this.setState({name:event.target.value})} /></div>
+        <div><input ref="theInput" type="text" placeholder="Type a name here" onInput={(event) => this.setState({name:event.target.value})} /></div>
         <div><button onClick={this.sayHi}>Click me</button></div>
       </div>
     );
+  };
+
+  componentDidMount () {
+    React.findDOMNode(this.refs['theInput']).focus();
   };
 }
