@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ThemeManager from './UI/ThemeManager.js';
 import { AppBar } from 'material-ui';
+import LeftNav from './components/LeftNav';
 
 export default class App extends Component {
   static get childContextTypes() {
@@ -20,9 +21,15 @@ export default class App extends Component {
       <div>
         <AppBar
           title="Title"
-          iconClassNameRight="muidocs-icon-navigation-expand-more" />
+          zDepth={1}
+          onLeftIconButtonTouchTap={this._toggleNav} />
+        <LeftNav ref="leftNav"/>
         <h1>{___('Hello, world')}!</h1>
       </div>
     );
+  }
+
+  _toggleNav = () => {
+    this.refs.leftNav.toggle();
   }
 }
