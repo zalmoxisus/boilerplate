@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import App from './containers/App';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 //Needed for onTouchTap

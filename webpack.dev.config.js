@@ -11,9 +11,9 @@ module.exports = {
     './src/index' // appʼs entry point
   ],
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle/en.js',
-    publicPath: '/public/'
+    path: path.join(__dirname, 'dist'),
+    filename: 'en.js',
+    publicPath: '/dist/'
   },
   plugins: [
     new I18nPlugin(null, '___'), // do not translate

@@ -1,5 +1,5 @@
 import mui from 'material-ui';
-import Theme from './Theme';
+import Theme from './Default';
 
 const ThemeManager = new mui.Styles.ThemeManager();
 ThemeManager.setTheme(Theme);

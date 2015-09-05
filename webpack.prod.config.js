@@ -8,7 +8,7 @@ module.exports = Object.keys(languages).map(function(language) {
     name: language,
     entry: './src/index',
     output: {
-      path: path.join(__dirname, 'public/bundle'),
+      path: path.join(__dirname, 'dist'),
       filename: language + '.js'
 
     },
