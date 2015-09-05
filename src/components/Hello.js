@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import Radium from 'radium';
 
-export default class Hello extends Component {
+var styles = {
+  base: {
+    padding: '1.5em',
+
+    ':hover': {
+      backgroundColor: 'green',
+      color: 'white'
+    }
+  }
+};
+
+@Radium
+class Hello extends Component {
   render() {
     return (
-      <h1>{___('Hello, world')}!</h1>
+      <h1 style={styles.base}>{___('Hello, world')}!</h1>
     );
   }
 }
+
+export default Hello;
