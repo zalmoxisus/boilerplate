@@ -24,7 +24,7 @@ export default class App extends Component {
           zDepth={1}
           onLeftIconButtonTouchTap={this._toggleNav} />
         <LeftNav ref="leftNav"/>
-        <h1>{___('Hello, world')}!</h1>
+        {this.props.children}
       </div>
     );
   }
