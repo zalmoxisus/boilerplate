@@ -25,7 +25,9 @@ export default class App extends Component {
           iconClassNameRight="icon-expand-more"
           onLeftIconButtonTouchTap={() => this.refs.leftNav.toggle()} />
         <LeftNav ref="leftNav"/>
-        {this.props.children}
+        <div style={{paddingTop: '4pc'}}>
+          {this.props.children}
+        </div>
       </AppCanvas>
     );
   }
