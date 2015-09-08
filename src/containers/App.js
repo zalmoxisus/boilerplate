@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppBar } from 'material-ui';
+import { AppCanvas, AppBar } from 'material-ui';
 import ThemeManager from '../themes/ThemeManager.js';
 import LeftNav from '../components/LeftNav';
 
@@ -18,7 +18,7 @@ export default class App extends Component {
   
   render() {
     return (
-      <div>
+      <AppCanvas>
         <AppBar
           title="Title"
           zDepth={1}
@@ -26,7 +26,7 @@ export default class App extends Component {
           onLeftIconButtonTouchTap={() => this.refs.leftNav.toggle()} />
         <LeftNav ref="leftNav"/>
         {this.props.children}
-      </div>
+      </AppCanvas>
     );
   }
 }
