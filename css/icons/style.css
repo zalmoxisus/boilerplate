@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'icons';
+	src:url('fonts/icons.eot?ae5vwj');
+	src:url('fonts/icons.eot?#iefixae5vwj') format('embedded-opentype'),
+		url('fonts/icons.ttf?ae5vwj') format('truetype'),
+		url('fonts/icons.woff?ae5vwj') format('woff'),
+		url('fonts/icons.svg?ae5vwj#icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-expand-more:before {
+	content: "\e20b";
+}

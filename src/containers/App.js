@@ -22,6 +22,7 @@ export default class App extends Component {
         <AppBar
           title="Title"
           zDepth={1}
+          iconClassNameRight="icon-expand_more"
           onLeftIconButtonTouchTap={this._toggleNav} />
         <LeftNav ref="leftNav"/>
         {this.props.children}
