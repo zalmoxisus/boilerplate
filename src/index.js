@@ -1,10 +1,68 @@
 import React from 'react';
-import App from './containers/App';
-import Hello from './components/Hello';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import { createStore } from 'redux';
+import { Provider, connect } from 'react-redux';
 
-//Needed for onTouchTap
-//Can go away when react 1.0 release
-injectTapEventPlugin();
+// React component
+class Counter extends React.Component {
+  render(){
+    const { value, onIncreaseClick } = this.props;
+    return (
+      <div>
+        <span>{value}</span>
+        <button onClick={onIncreaseClick}>Increase</button>
+      </div>
+    );
+  }
+}
 
-React.render(<App><Hello/></App>, document.body);
+// Action:
+const increaseAction = {type: 'increase'};
+
+// For debug only
+window.increaseAction = increaseAction;
+
+// Reducer:
+function counter(state={count: 0}, action) {
+  let count = state.count;
+  switch(action.type){
+    case 'increase':
+      return {count: count+1};
+    default:
+      return state;
+  }
+}
+
+// Store:
+let store = createStore(counter);
+
+// For debug only
+window.store = store;
+
+// Map Redux state to component props
+function mapStateToProps(state)  {
+  console.log('state',state);
+  return {
+    value: state.count
+  };
+}
+
+// Map Redux actions to component props
+function mapDispatchToProps(dispatch) {
+  return {
+    onIncreaseClick: () => dispatch(increaseAction)
+  };
+}
+
+// Connected Component
+// https://github.com/rackt/react-redux#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
+let App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter);
+
+React.render(
+  <Provider store={store}>
+    {() => <App />}
+  </Provider>,
+  document.body
+);
