@@ -10,7 +10,7 @@ React.render(
   // The child must be wrapped in a function
   // to work around an issue in React 0.13.
   <Provider store={store}>
-    {() => <App />}
+    {() => <App maxTodos={5} />}
   </Provider>,
   document.body
 );

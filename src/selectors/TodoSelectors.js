@@ -14,13 +14,17 @@ function selectTodos(todos, filter) {
 
 const visibilityFilterSelector = state => state.visibilityFilter;
 const todosSelector = state => state.todos;
+// accessing props via the second argument
+const maxTodosSelector = (_, props) => props.maxTodos;
 
 export const visibleTodosSelector = createSelector(
   visibilityFilterSelector,
   todosSelector,
-  (visibilityFilter, todos) => {
+  maxTodosSelector,
+  (visibilityFilter, todos, maxTodos) => {
+    const visibleTodos = selectTodos(todos, visibilityFilter).slice(0, maxTodos);
     return {
-      visibleTodos: selectTodos(todos, visibilityFilter),
+      visibleTodos,
       visibilityFilter
     };
   }
