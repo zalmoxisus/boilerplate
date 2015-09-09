@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from '../actions';
+import { addTodo, completeTodo, setVisibilityFilter } from '../actions';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
 import Footer from '../components/Footer';
+import { visibleTodosSelector } from '../selectors/todoSelectors';
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
             dispatch(addTodo(text))
           } />
         <TodoList
-          todos={visibleTodos}
+          todos={this.props.visibleTodos}
           onTodoClick={index =>
             dispatch(completeTodo(index))
           } />
@@ -42,25 +43,5 @@ App.propTypes = {
   ]).isRequired
 };
 
-function selectTodos(todos, filter) {
-  switch (filter) {
-    case VisibilityFilters.SHOW_ALL:
-      return todos;
-    case VisibilityFilters.SHOW_COMPLETED:
-      return todos.filter(todo => todo.completed);
-    case VisibilityFilters.SHOW_ACTIVE:
-      return todos.filter(todo => !todo.completed);
-  }
-}
-
-// Which props do we want to inject, given the global state?
-// Note: use https://github.com/faassen/reselect for better performance.
-function select(state) {
-  return {
-    visibleTodos: selectTodos(state.todos, state.visibilityFilter),
-    visibilityFilter: state.visibilityFilter
-  };
-}
-
-// Wrap the component to inject dispatch and state into it
-export default connect(select)(App);
+// Pass the selector to the connect component
+export default connect(visibleTodosSelector)(App);
