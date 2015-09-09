@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
-import { AppCanvas, AppBar } from 'material-ui';
-import ThemeManager from '../themes/ThemeManager.js';
-import LeftNav from '../components/LeftNav';
+import AddTodo from '../components/AddTodo';
+import TodoList from '../components/TodoList';
+import Footer from '../components/Footer';
 
 export default class App extends Component {
-  static get childContextTypes() {
-    return {
-      muiTheme : React.PropTypes.object
-    };
-  }
-  
-  getChildContext() {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  }
-  
   render() {
     return (
-      <AppCanvas>
-        <AppBar
-          title="Title"
-          zDepth={1}
-          iconClassNameRight="icon-expand-more"
-          onLeftIconButtonTouchTap={() => this.refs.leftNav.toggle()} />
-        <LeftNav ref="leftNav"/>
-        <div style={{paddingTop: '4pc'}}>
-          {this.props.children}
-        </div>
-      </AppCanvas>
+      <div>
+        <AddTodo
+          onAddClick={text =>
+            console.log('add todo', text)
+          } />
+        <TodoList
+          todos={[{
+            text: 'Use Redux',
+            completed: true
+          }, {
+            text: 'Learn to connect it to React',
+            completed: false
+          }]}
+          onTodoClick={todo =>
+            console.log('todo clicked', todo)
+          } />
+        <Footer
+          filter='SHOW_ALL'
+          onFilterChange={filter =>
+            console.log('filter change', filter)
+          } />
+      </div>
     );
   }
 }
