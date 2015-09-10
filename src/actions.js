@@ -20,7 +20,7 @@ export const VisibilityFilters = {
  * action creators
  */
 
-function addTodoWithoutCheck(text) {
+export function addTodoWithoutCheck(text) {
   return { type: ADD_TODO, text };
 }
 
