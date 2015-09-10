@@ -17,6 +17,10 @@ describe('actions', () => {
       type: ADD_TODO,
       text
     };
-    expect(addTodo(text)).toEqual(expectedAction);
+    let res;
+    const dispatch = (v) => {res = v};
+    const getState = () => { return {todos:[]}; };
+    addTodo(text)(dispatch, getState);
+    expect(res).toEqual(expectedAction);
   });
 });
