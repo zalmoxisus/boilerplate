@@ -20,8 +20,22 @@ export const VisibilityFilters = {
  * action creators
  */
 
-export function addTodo(text) {
+function addTodoWithoutCheck(text) {
   return { type: ADD_TODO, text };
+}
+
+export function addTodo(text) {
+  // This form is allowed by Redux Thunk middleware
+  // described below in “Async Action Creators” section.
+  return function (dispatch, getState) {
+    if (getState().todos.length === 3) {
+      console.error('Limit exceeded');
+      // Exit early
+      return;
+    }
+
+    dispatch(addTodoWithoutCheck(text));
+  }
 }
 
 export function completeTodo(index) {
