@@ -1,5 +1,5 @@
 import expect from 'expect';
-import { ADD_TODO, addTodo, addTodoWithoutCheck } from '../src/actions';
+import { ADD_TODO, addTodo, addTodoWithoutCheck } from '../../src/actions';
 
 describe('actions', () => {
   it('should create an action to add a todo', () => {
