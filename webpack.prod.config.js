@@ -14,7 +14,10 @@ module.exports = Object.keys(languages).map(function(language) {
     },
     plugins: [
       new I18nPlugin(languages['ru'], '___'),
-      new webpack.optimize.UglifyJsPlugin({output: {comments: true}})
+      new webpack.optimize.UglifyJsPlugin({output: {comments: true}}),
+      new webpack.ProvidePlugin({
+        'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+      })
     ],
     module: {
       loaders: [{

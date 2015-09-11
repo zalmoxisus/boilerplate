@@ -17,7 +17,10 @@ module.exports = {
   },
   plugins: [
     new I18nPlugin(null, '___'), // do not translate
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    })
   ],
   module: {
     loaders: [{
