@@ -4,12 +4,6 @@ import ThemeManager from '../themes/ThemeManager.js';
 import LeftNav from '../components/LeftNav';
 
 export default class App extends Component {
-  static get childContextTypes() {
-    return {
-      muiTheme : React.PropTypes.object
-    };
-  }
-  
   getChildContext() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
@@ -32,3 +26,7 @@ export default class App extends Component {
     );
   }
 }
+
+App.childContextTypes = {
+  muiTheme : React.PropTypes.object
+};
