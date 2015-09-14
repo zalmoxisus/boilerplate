@@ -1,6 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
 import reducer from '../reducers';
+import createDevToolsWindow from '../utils/debug/createDevToolsWindow';
+import { devTools, persistState } from 'redux-devtools';
 
 export default function configureStore() {
   if (DEBUG) {
@@ -11,8 +13,14 @@ export default function configureStore() {
       collapsed: true
     });
 
-    finalCreateStore = applyMiddleware(
-      logger
+    finalCreateStore = compose(
+      applyMiddleware(
+        logger
+      ),
+      // Provides support for DevTools:
+      devTools(),
+      // Lets you write ?debug_session=<name> in address bar to persist debug sessions
+      persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
     )(createStore);
 
     const store = finalCreateStore(reducer);
@@ -24,6 +32,10 @@ export default function configureStore() {
         store.replaceReducer(nextReducer);
       });
     }
+    
+    window.showDevTools = () => {
+      createDevToolsWindow(store);
+    };
 
     return store;
   }
