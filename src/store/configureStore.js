@@ -1,16 +1,32 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createLogger from 'redux-logger';
 import reducer from '../reducers';
 
 export default function configureStore() {
-  const store = createStore(reducer);
+  if (DEBUG) {
+    let finalCreateStore;
 
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers');
-      store.replaceReducer(nextReducer);
+    const logger = createLogger({
+      level: 'info',
+      collapsed: true
     });
-  }
 
-  return store;
+    finalCreateStore = applyMiddleware(
+      logger
+    )(createStore);
+
+    const store = finalCreateStore(reducer);
+    
+    // Enable Webpack hot module replacement for reducers
+    if (module.hot) {
+      module.hot.accept('../reducers', () => {
+        const nextReducer = require('../reducers');
+        store.replaceReducer(nextReducer);
+      });
+    }
+
+    return store;
+  }
+  
+  return createStore(reducer);
 }

@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var I18nPlugin = require('i18n-webpack-plugin');
 
 module.exports = {
+  debug: true,
   devtool: 'eval',
   entry: [
     //'webpack-dev-server/client?http://0.0.0.0:3000',
