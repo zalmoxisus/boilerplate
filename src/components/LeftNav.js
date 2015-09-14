@@ -7,6 +7,12 @@ let menuItems = [
 
 export default class LeftNav extends React.Component {
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.toggled !== this.props.toggled) {
+      this.refs.leftNav.toggle();
+    }
+  }
+  
   render () {
     return (
       <mui.LeftNav
@@ -17,10 +23,6 @@ export default class LeftNav extends React.Component {
         onChange={this._onLeftNavChange}/>
     );
   }
-
-  toggle = () => {
-    this.refs.leftNav.toggle();
-  };
 
   _onLeftNavChange = (e, key, payload) => {
     console.log('selected', payload.route);
