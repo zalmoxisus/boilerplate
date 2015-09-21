@@ -1,14 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import createLogger from 'redux-logger';
 import reducer from '../reducers';
-import createDevToolsWindow from '../utils/debug/createDevToolsWindow';
-import { devTools, persistState } from 'redux-devtools';
 
 export default function configureStore() {
   if (DEBUG) {
+    const { devTools, persistState } = require('redux-devtools');
     let finalCreateStore;
 
-    const logger = createLogger({
+    const logger = require('redux-logger')({
       level: 'info',
       collapsed: true
     });
@@ -34,7 +32,7 @@ export default function configureStore() {
     }
     
     window.showDevTools = () => {
-      createDevToolsWindow(store);
+      require('../utils/debug/createDevToolsWindow')(store);
     };
 
     return store;
