@@ -1,11 +1,19 @@
 import React from 'react';
 import mui from 'material-ui';
+import { connect } from 'react-redux';
+import { pushState } from 'redux-router';
 
 let menuItems = [
-  {route: 'hello', text: 'Hello'}
+  { type: mui.MenuItem.Types.SUBHEADER, text: 'Demo 1' },
+  { route: '/hello', text: 'Hello' },
+  { type: mui.MenuItem.Types.SUBHEADER, text: 'Demo 2' },
+  { route: '/parent', text: 'Parent' },
+  { route: '/parent/child', text: 'Child' },
+  { type: mui.MenuItem.Types.SUBHEADER, text: 'Link' },
+  { type: mui.MenuItem.Types.LINK, payload: '/hello', text: 'Hello' }
 ];
 
-export default class LeftNav extends React.Component {
+class LeftNav extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.toggled !== this.props.toggled) {
@@ -24,6 +32,14 @@ export default class LeftNav extends React.Component {
   }
 
   _onLeftNavChange = (e, key, payload) => {
-    console.log('selected', payload.route);
+    this.props.pushState(null, payload.route);
   };
 }
+
+export default connect(
+  // Use a selector to subscribe to state
+  state => ({ q: state.router.location.query.q }),
+
+  // Use an action creator for navigation
+  { pushState }
+)(LeftNav);

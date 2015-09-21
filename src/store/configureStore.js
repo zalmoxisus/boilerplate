@@ -1,4 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
+import createHistory from 'history/lib/createBrowserHistory';
+//import createHistory from 'history/lib/createHashHistory';
 import reducer from '../reducers';
 
 export default function configureStore() {
@@ -12,6 +15,7 @@ export default function configureStore() {
     });
 
     finalCreateStore = compose(
+      reduxReactRouter({ createHistory }),
       applyMiddleware(
         logger
       ),
@@ -38,5 +42,5 @@ export default function configureStore() {
     return store;
   }
   
-  return createStore(reducer);
+  return compose(reduxReactRouter({ createHistory }))(createStore)(reducer);
 }
