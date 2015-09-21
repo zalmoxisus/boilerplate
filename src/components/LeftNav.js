@@ -18,7 +18,6 @@ export default class LeftNav extends React.Component {
       <mui.LeftNav
         ref="leftNav"
         docked={false}
-        isInitiallyOpen={false}
         menuItems={menuItems}
         onChange={this._onLeftNavChange}/>
     );
