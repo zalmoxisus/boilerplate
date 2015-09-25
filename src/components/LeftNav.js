@@ -1,7 +1,6 @@
 import React from 'react';
 import mui from 'material-ui';
 import { connect } from 'react-redux';
-import { pushState } from 'redux-router';
 
 let menuItems = [
   { type: mui.MenuItem.Types.SUBHEADER, text: 'Demo 1' },
@@ -13,7 +12,7 @@ let menuItems = [
   { type: mui.MenuItem.Types.LINK, payload: '/hello', text: 'Hello' }
 ];
 
-class LeftNav extends React.Component {
+export default class LeftNav extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.toggled !== this.props.toggled) {
@@ -35,11 +34,3 @@ class LeftNav extends React.Component {
     this.props.pushState(null, payload.route);
   };
 }
-
-export default connect(
-  // Use a selector to subscribe to state
-  state => ({ q: state.router.location.query.q }),
-
-  // Use an action creator for navigation
-  { pushState }
-)(LeftNav);
