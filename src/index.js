@@ -5,11 +5,11 @@ import { Provider, connect } from 'react-redux';
 // React component
 class Counter extends React.Component {
   render(){
-    const { value, onIncreaseClick } = this.props;
+    const { value, increaseAction } = this.props;
     return (
       <div>
         <span>{value}</span>
-        <button onClick={onIncreaseClick}>Increase</button>
+        <button onClick={increaseAction}>Increase</button>
       </div>
     );
   }
@@ -50,11 +50,7 @@ function mapStateToProps(state)  {
 }
 
 // Map Redux actions to component props
-function mapDispatchToProps(dispatch) {
-  return {
-    onIncreaseClick: () => dispatch(increaseAction())
-  };
-}
+const mapDispatchToProps = { increaseAction };
 
 // Connected Component
 // https://github.com/rackt/react-redux#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options
