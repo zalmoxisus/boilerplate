@@ -29,7 +29,8 @@ function counter(state={count: 0}, action) {
   let count = state.count;
   switch(action.type){
     case INCREMENT_COUNTER:
-      return Object.assign({}, state, {count: state.count + 1});
+      //return Object.assign({}, state, {count: state.count + 1});
+      return { ...state, count: state.count + 1 };
     default:
       return state;
   }
