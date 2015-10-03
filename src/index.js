@@ -16,7 +16,10 @@ class Counter extends React.Component {
 }
 
 // Action:
-const increaseAction = {type: 'increase'};
+const INCREMENT_COUNTER = {type: 'INCREMENT_COUNTER'};
+function increaseAction() {
+  return { type: INCREMENT_COUNTER };
+}
 
 // For debug only
 window.increaseAction = increaseAction;
@@ -25,7 +28,7 @@ window.increaseAction = increaseAction;
 function counter(state={count: 0}, action) {
   let count = state.count;
   switch(action.type){
-    case 'increase':
+    case INCREMENT_COUNTER:
       return {count: count+1};
     default:
       return state;
@@ -49,7 +52,7 @@ function mapStateToProps(state)  {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+    onIncreaseClick: () => dispatch(increaseAction())
   };
 }
 
