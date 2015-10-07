@@ -1,0 +1,85 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { AppCanvas, AppBar } from 'material-ui';
+import expect from 'expect'
+import Test from 'legit-tests'
+import { Find, SetState } from 'legit-tests/lib/middleware'
+import ThemeManager from '../../src/themes/ThemeManager.js';
+import LeftNav from '../../src/components/LeftNav'
+
+class App extends Component {
+  static childContextTypes = {
+    muiTheme:React.PropTypes.object
+  };
+
+  state = {leftNavToggled: false};
+
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  }
+
+  render() {
+    const { pushState, toggleLeftNav } = this.props;
+    return (
+      <AppCanvas>
+        <AppBar
+          title="Title"
+          zDepth={1}
+          iconClassNameRight="icon-expand-more"
+          onLeftIconButtonTouchTap={toggleLeftNav} />
+        <LeftNav toggled={this.state.leftNavToggled} pushState={pushState} />
+        <div style={{paddingTop: '4pc'}}>
+          {this.props.children}
+        </div>
+      </AppCanvas>
+    );
+  }
+}
+
+describe('LeftNav component', () => {
+  it('should render', () => {
+    Test(<App />)
+      .find('div').find('span').find('button').find('h1')
+      .test(({div,span,button,h1}) => {
+        expect(div).toExist();
+        expect(span).toExist();
+        expect(button).toExist();
+        expect(h1).toExist();
+      });
+  });
+
+  it('should toggle', () => {
+    Test(<App />)
+      .use(SetState, {leftNavToggled: true})
+      .use(Find, 'button').use(Find, 'div')
+      .test(({div}) => {
+        let toggled = false;
+        div.forEach( (obj) => {
+          if(obj.getDOMNode().style.transform){
+            //console.log(obj.getDOMNode().style.transform);
+            if (obj.getDOMNode().style.transform === 'translate3d(0px, 0, 0)') toggled = true;
+          }
+        });
+        expect(toggled).toBe(true);
+      });
+  });
+
+  /*  it('should toggle', () => {
+   Test(<App />)
+   .find('button')
+   .simulate({method: 'click', element: 'button'})
+   .find('div')
+   .test(({div}) => {
+   let toggled = false;
+   div.forEach( (obj) => {
+   if(obj.getDOMNode().style.transform){
+   console.log(obj.getDOMNode().style.transform);
+   if (obj.getDOMNode().style.transform === 'translate3d(-266px, 0, 0)') toggled = true;
+   }
+   });
+   expect(toggled).toBe(true);
+   });
+   });*/
+});

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import mui from 'material-ui';
 import Radium from 'radium';
 let Colors = mui.Styles.Colors;
@@ -18,7 +19,10 @@ var styles = {
 class Hello extends Component {
   render() {
     return (
-      <h1 style={styles.base}>{___('Hello, world')}!</h1>
+      <div>
+        <h1 ref="h1" style={styles.base} onClick={()=>{React.findDOMNode(this.refs['h1']).style.color = 'red'}}>{___('Hello, world')}!</h1>
+        <Link to="/parent" style={{marginLeft: 10}}>{ '>>' }Home</Link>
+      </div>
     );
   }
 }

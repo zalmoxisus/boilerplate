@@ -1,6 +1,5 @@
 import React from 'react';
 import mui from 'material-ui';
-import { connect } from 'react-redux';
 
 let menuItems = [
   { type: mui.MenuItem.Types.SUBHEADER, text: 'Demo 1' },

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import { ReduxRouter } from 'redux-router';
 import configureStore from '../store/configureStore';
 import App from './App';
@@ -14,6 +14,7 @@ class Root extends Component {
       <Provider store={store}>{() =>
         <ReduxRouter>
           <Route path="/" component={App}>
+            <IndexRoute component={Hello}/>
             <Route path="hello" component={Hello}/>
             <Route path="parent" component={Parent}>
               <Route path="child" component={Child}/>
