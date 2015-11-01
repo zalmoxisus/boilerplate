@@ -26,7 +26,7 @@ export default function configureStore() {
     )(createStore);
 
     const store = finalCreateStore(reducer);
-    
+
     // Enable Webpack hot module replacement for reducers
     if (module.hot) {
       module.hot.accept('../reducers', () => {
@@ -34,13 +34,13 @@ export default function configureStore() {
         store.replaceReducer(nextReducer);
       });
     }
-    
+
     window.showDevTools = () => {
       require('../utils/debug/createDevToolsWindow')(store);
     };
 
     return store;
   }
-  
+
   return compose(reduxReactRouter({ createHistory }))(createStore)(reducer);
 }

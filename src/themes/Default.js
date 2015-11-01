@@ -18,24 +18,23 @@ let LightTheme = {
       textColor: Colors.darkBlack,
       canvasColor: Colors.white,
       borderColor: Colors.grey300,
-      disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3),
+      disabledColor: ColorManipulator.fade(Colors.darkBlack, 0.3)
     };
   },
-  getComponentThemes(palette, spacing) {
-    spacing = spacing || Spacing;
+  getComponentThemes(palette, spacing = Spacing) {
     let obj = {
       appBar: {
         color: palette.primary1Color,
         textColor: Colors.darkWhite,
-        height: spacing.desktopKeylineIncrement,
+        height: spacing.desktopKeylineIncrement
       },
       avatar: {
-        borderColor: 'rgba(0, 0, 0, 0.08)',
+        borderColor: 'rgba(0, 0, 0, 0.08)'
       },
       button: {
         height: 36,
         minWidth: 88,
-        iconButtonSize: spacing.iconSize * 2,
+        iconButtonSize: spacing.iconSize * 2
       },
       checkbox: {
         boxColor: palette.textColor,
@@ -43,23 +42,23 @@ let LightTheme = {
         requiredColor: palette.primary1Color,
         disabledColor: palette.disabledColor,
         labelColor: palette.textColor,
-        labelDisabledColor: palette.disabledColor,
+        labelDisabledColor: palette.disabledColor
       },
       datePicker: {
         color: palette.primary1Color,
         textColor: Colors.white,
         calendarTextColor: palette.textColor,
         selectColor: palette.primary2Color,
-        selectTextColor: Colors.white,
+        selectTextColor: Colors.white
       },
       dropDownMenu: {
-        accentColor: palette.borderColor,
+        accentColor: palette.borderColor
       },
       flatButton: {
         color: palette.canvasColor,
         textColor: palette.textColor,
         primaryTextColor: palette.accent1Color,
-        secondaryTextColor: palette.primary1Color,
+        secondaryTextColor: palette.primary1Color
       },
       floatingActionButton: {
         buttonSize: 56,
@@ -67,46 +66,46 @@ let LightTheme = {
         color: palette.accent1Color,
         iconColor: Colors.white,
         secondaryColor: palette.primary1Color,
-        secondaryIconColor: Colors.white,
+        secondaryIconColor: Colors.white
       },
       inkBar: {
-        backgroundColor: palette.accent1Color,
+        backgroundColor: palette.accent1Color
       },
       leftNav: {
         width: spacing.desktopKeylineIncrement * 4,
-        color: Colors.white,
+        color: Colors.white
       },
       listItem: {
-        nestedLevelDepth: 18,
+        nestedLevelDepth: 18
       },
       menu: {
         backgroundColor: Colors.white,
-        containerBackgroundColor: Colors.white,
+        containerBackgroundColor: Colors.white
       },
       menuItem: {
         dataHeight: 32,
         height: 48,
         hoverColor: 'rgba(0, 0, 0, .035)',
         padding: spacing.desktopGutter,
-        selectedTextColor: palette.accent1Color,
+        selectedTextColor: palette.accent1Color
       },
       menuSubheader: {
         padding: spacing.desktopGutter,
         borderColor: palette.borderColor,
-        textColor: palette.primary1Color,
+        textColor: palette.primary1Color
       },
       paper: {
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white
       },
       radioButton: {
-        borderColor:  palette.textColor,
+        borderColor: palette.textColor,
         backgroundColor: Colors.white,
         checkedColor: palette.primary1Color,
         requiredColor: palette.primary1Color,
         disabledColor: palette.disabledColor,
         size: 24,
         labelColor: palette.textColor,
-        labelDisabledColor: palette.disabledColor,
+        labelDisabledColor: palette.disabledColor
       },
       raisedButton: {
         color: Colors.white,
@@ -114,11 +113,11 @@ let LightTheme = {
         primaryColor: palette.accent1Color,
         primaryTextColor: Colors.white,
         secondaryColor: palette.primary1Color,
-        secondaryTextColor: Colors.white,
+        secondaryTextColor: Colors.white
       },
       refreshIndicator: {
         strokeColor: Colors.grey300,
-        loadingStrokeColor: palette.primary1Color,
+        loadingStrokeColor: palette.primary1Color
       },
       slider: {
         trackSize: 2,
@@ -130,38 +129,38 @@ let LightTheme = {
         handleColorZero: Colors.grey400,
         handleFillColor: Colors.white,
         selectionColor: palette.primary3Color,
-        rippleColor: palette.primary1Color,
+        rippleColor: palette.primary1Color
       },
       snackbar: {
         textColor: Colors.white,
         backgroundColor: '#323232',
-        actionColor: palette.accent1Color,
+        actionColor: palette.accent1Color
       },
       table: {
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.white
       },
       tableHeader: {
-        borderColor: palette.borderColor,
+        borderColor: palette.borderColor
       },
       tableHeaderColumn: {
         textColor: Colors.lightBlack,
         height: 56,
-        spacing: 24,
+        spacing: 24
       },
       tableFooter: {
         borderColor: palette.borderColor,
-        textColor: Colors.lightBlack,
+        textColor: Colors.lightBlack
       },
       tableRow: {
         hoverColor: Colors.grey200,
         stripeColor: ColorManipulator.lighten(palette.primary1Color, 0.55),
         selectedColor: Colors.grey300,
         textColor: Colors.darkBlack,
-        borderColor: palette.borderColor,
+        borderColor: palette.borderColor
       },
       tableRowColumn: {
         height: 48,
-        spacing: 24,
+        spacing: 24
       },
       timePicker: {
         color: Colors.white,
@@ -169,7 +168,7 @@ let LightTheme = {
         accentColor: palette.primary1Color,
         clockColor: Colors.black,
         selectColor: palette.primary2Color,
-        selectTextColor: Colors.white,
+        selectTextColor: Colors.white
       },
       toggle: {
         thumbOnColor: palette.primary1Color,
@@ -180,7 +179,7 @@ let LightTheme = {
         trackOffColor: Colors.minBlack,
         trackDisabledColor: Colors.faintBlack,
         labelColor: palette.textColor,
-        labelDisabledColor: palette.disabledColor,
+        labelDisabledColor: palette.disabledColor
       },
       toolbar: {
         backgroundColor: ColorManipulator.darken('#eeeeee', 0.05),
@@ -188,10 +187,10 @@ let LightTheme = {
         titleFontSize: 20,
         iconColor: 'rgba(0, 0, 0, .40)',
         separatorColor: 'rgba(0, 0, 0, .175)',
-        menuHoverColor: 'rgba(0, 0, 0, .10)',
+        menuHoverColor: 'rgba(0, 0, 0, .10)'
       },
       tabs: {
-        backgroundColor: palette.primary1Color,
+        backgroundColor: palette.primary1Color
       },
       textField: {
         textColor: palette.textColor,
@@ -201,8 +200,8 @@ let LightTheme = {
         errorColor: Colors.red500,
         focusColor: palette.primary1Color,
         backgroundColor: 'transparent',
-        borderColor: palette.borderColor,
-      },
+        borderColor: palette.borderColor
+      }
     };
 
     // Properties based on previous properties

@@ -18,8 +18,12 @@ export default class LeftNav extends React.Component {
       this.refs.leftNav.toggle();
     }
   }
-  
-  render () {
+
+  _onLeftNavChange = (e, key, payload) => {
+    this.props.pushState(null, payload.route);
+  };
+
+  render() {
     return (
       <mui.LeftNav
         ref="leftNav"
@@ -28,8 +32,4 @@ export default class LeftNav extends React.Component {
         onChange={this._onLeftNavChange}/>
     );
   }
-
-  _onLeftNavChange = (e, key, payload) => {
-    this.props.pushState(null, payload.route);
-  };
 }

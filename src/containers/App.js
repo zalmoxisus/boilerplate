@@ -12,7 +12,7 @@ class App extends Component {
       muiTheme: ThemeManager.getCurrentTheme()
     };
   }
-  
+
   render() {
     const { pushState, leftNavToggled, toggleLeftNav } = this.props;
     return (
@@ -32,7 +32,7 @@ class App extends Component {
 }
 
 App.childContextTypes = {
-  muiTheme : React.PropTypes.object
+  muiTheme: React.PropTypes.object
 };
 
 // Which part of the Redux global state does our component want to receive as props

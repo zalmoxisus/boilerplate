@@ -1,8 +1,8 @@
 import React from 'react';
-import expect from 'expect'
-import Test from 'legit-tests'
+import expect from 'expect';
+import Test from 'legit-tests';
 //import { Find } from 'legit-tests/lib/middleware'
-import Hello from '../../src/components/Hello'
+import Hello from '../../src/components/Hello';
 
 describe('Hello component', () => {
   it('should render (test with shallow)', () => {
@@ -23,8 +23,8 @@ describe('Hello component', () => {
   it('should render (to string)', () => {
     Test(<Hello />)
       .renderToString(string => {
-        expect(string).toMatch(/Hello, world!/)
-      })
+        expect(string).toMatch(/Hello, world!/);
+      });
   });
 
   it('should have padding style', () => {
