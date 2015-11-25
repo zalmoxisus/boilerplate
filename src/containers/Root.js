@@ -11,7 +11,7 @@ const store = configureStore();
 class Root extends Component {
   render() {
     return (
-      <Provider store={store}>{() =>
+      <Provider store={store}>
         <ReduxRouter>
           <Route path="/" component={App}>
             <IndexRoute component={Hello}/>
@@ -22,7 +22,7 @@ class Root extends Component {
             </Route>
           </Route>
         </ReduxRouter>
-      }</Provider>
+      </Provider>
     );
   }
 }

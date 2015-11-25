@@ -6,7 +6,6 @@ import reducer from '../reducers';
 
 export default function configureStore() {
   if (DEBUG) {
-    const { devTools, persistState } = require('redux-devtools');
     let finalCreateStore;
 
     const logger = require('redux-logger')({
@@ -18,11 +17,7 @@ export default function configureStore() {
       reduxReactRouter({ createHistory }),
       applyMiddleware(
         logger
-      ),
-      // Provides support for DevTools:
-      devTools(),
-      // Lets you write ?debug_session=<name> in address bar to persist debug sessions
-      persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+      )
     )(createStore);
 
     const store = finalCreateStore(reducer);
@@ -34,10 +29,6 @@ export default function configureStore() {
         store.replaceReducer(nextReducer);
       });
     }
-
-    window.showDevTools = () => {
-      require('../utils/debug/createDevToolsWindow')(store);
-    };
 
     return store;
   }
