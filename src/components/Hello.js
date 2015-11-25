@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import mui from 'material-ui';
 import Radium from 'radium';
-let Colors = mui.Styles.Colors;
 
 const styles = {
   base: {
     padding: '1.5em',
 
     ':hover': {
-      backgroundColor: Colors['deepPurple900'],
+      backgroundColor: 'green',
       color: 'white'
     }
   }
