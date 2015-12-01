@@ -17,7 +17,8 @@ export default function configureStore() {
       reduxReactRouter({ createHistory }),
       applyMiddleware(
         logger
-      )
+      ),
+      global.devToolsExtension ? global.devToolsExtension() : f => f
     )(createStore);
 
     const store = finalCreateStore(reducer);
