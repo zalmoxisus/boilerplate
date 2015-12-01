@@ -14,10 +14,10 @@ export default function configureStore() {
     });
 
     finalCreateStore = compose(
-      reduxReactRouter({ createHistory }),
       applyMiddleware(
         logger
       ),
+      reduxReactRouter({ createHistory }),
       global.devToolsExtension ? global.devToolsExtension() : f => f
     )(createStore);
 
